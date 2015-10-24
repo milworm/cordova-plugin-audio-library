@@ -1,7 +1,11 @@
 # cordova-plugin-audio-library
 Cordova/Ionic plugin that allows to get user's audio library (list of songs) on both ios and android platforms. It also allows to play an item on iOS device
 
-##examples
+##Installation
+git clone https://github.com/milworm/cordova-plugin-audio-library.git
+ionic plugin add ./cordova-plugin-audio-library
+
+##Examples
 ####Getting list of songs
 ```
 window.cordova.plugins.AudioLibrary.getItems(function(items) {
