@@ -25,3 +25,10 @@ window.cordova.plugins.AudioLibrary.play("11111111", function() {
   // started playing.
 });
 ```
+
+####Pausing an audio track (IOS only).
+```
+window.cordova.plugins.AudioLibrary.pause(function() {
+  // paused.
+});
+```
