@@ -49,27 +49,43 @@
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
-- (void)play:(CDVInvokedUrlCommand*)command
+- (void)initQueue:(CDVInvokedUrlCommand*)command
 {   
-
     NSString *persistentID = [command.arguments objectAtIndex:0];
+
     MPMediaQuery *songsQuery = [[MPMediaQuery alloc] init];
     MPMusicPlayerController *player = [MPMusicPlayerController systemMusicPlayer];
 
-    [player setQueueWithQuery: songsQuery];
     NSArray *items = [songsQuery items];
+    NSMutableArray *result = [[NSMutableArray alloc] init];
+
+    BOOL found = NO;
 
     for(MPMediaItem *item in items) {
         NSString *itemId = [[item valueForProperty: MPMediaItemPropertyPersistentID] stringValue];
 
-        if([persistentID isEqualToString:itemId]) {
-            [player setNowPlayingItem: item];
-            break;
-        }
+        if([persistentID isEqualToString:itemId])
+            found = YES;
+
+        if(found == YES)
+            [result addObject:item];
     }
 
-    [player play];
+    NSArray *arrayResult = [NSArray arrayWithArray:result];
 
+    [player setQueueWithItemCollection: [MPMediaItemCollection collectionWithItems: arrayResult]];
+    [player setNowPlayingItem: result[0]];
+    [player pause];
+    // [player skipToBeginning];
+
+    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:true];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
+
+- (void)play:(CDVInvokedUrlCommand*)command
+{
+    MPMusicPlayerController *player = [MPMusicPlayerController systemMusicPlayer];
+    [player play];
     CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:true];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }

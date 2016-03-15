@@ -23,6 +23,7 @@ public class AudioLibrary extends CordovaPlugin {
             this.getItems(message, callbackContext);
             return true;
         }
+
         return false;
     }
 
@@ -35,7 +36,6 @@ public class AudioLibrary extends CordovaPlugin {
                 MediaStore.Audio.Media.TITLE,
                 MediaStore.Audio.Media.ARTIST,
                 MediaStore.Audio.Media.DATA,
-                MediaStore.Audio.Media.DISPLAY_NAME,
                 MediaStore.Audio.Media.DURATION,
                 MediaStore.Audio.Media._ID
         };
@@ -53,7 +53,6 @@ public class AudioLibrary extends CordovaPlugin {
                     String title = cursor.getString(0);
                     String artist = cursor.getString(1);
                     String path = cursor.getString(2);
-                    String displayName = cursor.getString(3);
                     String songDuration = cursor.getString(4);
 
                     JSONObject item = new JSONObject();
@@ -61,7 +60,6 @@ public class AudioLibrary extends CordovaPlugin {
                     item.put("title", cursor.getString(0));
                     item.put("artist", cursor.getString(1));
                     item.put("path", cursor.getString(2));
-                    item.put("displayName", cursor.getString((3)));
                     item.put("duration", cursor.getString(4));
                     item.put("id", cursor.getString(5));
 

@@ -6,10 +6,14 @@ exports.getItems = function(success, error) {
     }, error, "AudioLibrary", "getItems", [""]);
 };
 
-exports.play = function(id, success, error) {
-    exec(success, error, "AudioLibrary", "play", [id + ""]);
+exports.play = function(success, error) {
+    exec(success, error, "AudioLibrary", "play", []);
 }
 
 exports.pause = function(success, error) {
     exec(success, error, "AudioLibrary", "pause", []);
+}
+
+exports.initQueue = function(id, success, error) {
+    exec(success, error, "AudioLibrary", "initQueue", [id + ""]);
 }
