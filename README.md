@@ -8,7 +8,7 @@ ionic plugin add ./cordova-plugin-audio-library
 ```
 
 ##Examples
-####Getting list of songs
+####List of songs
 ```
 window.cordova.plugins.AudioLibrary.getItems(function(items) {
   // your code
@@ -25,16 +25,23 @@ Each item in items is an object, for instance:
 }
 ```
 
-####Playing an audio track (IOS only).
+####Initialize an audio queue (IOS only).
 ```
-window.cordova.plugins.AudioLibrary.play("11111111", function() {
-  // started playing.
+window.cordova.plugins.AudioLibrary.initQueue(items[0].id, function() {
+  // playing queue is ready
 });
 ```
 
-####Pausing an audio track (IOS only).
+####Play a queue (IOS only).
+```
+window.cordova.plugins.AudioLibrary.play(function() {
+  // first song in audio queue is started playing.
+});
+```
+
+####Pause an audio track (IOS only).
 ```
 window.cordova.plugins.AudioLibrary.pause(function() {
-  // paused.
+  // song is paused.
 });
 ```
