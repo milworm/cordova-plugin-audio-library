@@ -11,7 +11,7 @@ ionic plugin add ./cordova-plugin-audio-library
 ####Getting list of songs
 ```
 window.cordova.plugins.AudioLibrary.getItems(function(items) {
-  items = JSON.parse(items);
+  // your code
 });
 ```
 Each item in items is an object, for instance:
