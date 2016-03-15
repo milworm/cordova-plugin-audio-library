@@ -2,7 +2,6 @@
 Cordova/Ionic plugin that allows to get user's audio library (list of songs) on both iOS and Android platforms. 
 It also supports play/pause functionality.
 
-####Support
 [![Support](https://supporter.60devs.com/api/b/399936c021d5111d90001de85283a4b5)](https://supporter.60devs.com/give/399936c021d5111d90001de85283a4b5)
 
 ##Installation
